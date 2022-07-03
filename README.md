@@ -1,8 +1,5 @@
-# Latex template repository
+# act2022-slides
 
-This is a template for making new latex projects.
+Slides for my ACT 2022 talk, 'Fully abstract categorical semantics for digital circuits'.
 
-When the new repo is created, a workflow will run that creates
-
-* An empty latex file with the name of the repo and the author addded
-* A new readme containing links to the latest release of the file
+* [Latest release](https://github.com/georgejkaye/csl2023/releases/latest)
