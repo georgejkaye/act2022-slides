@@ -17,22 +17,35 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
-      - name: Package the latex file
+      - name: Package the presentation file
         uses: xu-cheng/texlive-action/full@v1
         with:
-          run: python3 ./latex-scripts/src/package.py ${{ github.event.repository.name }} . main
-      - name: Zip up the package
+          run: python3 ./latex-scripts/src/package.py ${{ github.event.repository.name }}-presentation . main-presentation
+      - name: Package the static file
+        uses: xu-cheng/texlive-action/full@v1
+        with:
+          run: python3 ./latex-scripts/src/package.py ${{ github.event.repository.name }}-static . main-static
+      - name: Zip up the presentation package
         uses: montudor/action-zip@v1
         with:
-          args: zip -qq -r ${{ github.event.repository.name }}.zip ${{ github.event.repository.name }}
+          args: zip -qq -r ${{ github.event.repository.name }}-presentation.zip ${{ github.event.repository.name }}-presentation
+      - name: Zip up the static package
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r ${{ github.event.repository.name }}-static.zip ${{ github.event.repository.name }}-static
       - name: Set release name
         id: name
         run: echo "::set-output name=name::$(date +'%Y-%m-%d-%H%M')"
-      - name: Upload PDF as an artifact
+      - name: Upload presentation PDF as an artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ steps.name.outputs.name }}.pdf
-          path: main.pdf
+          name: ${{ steps.name.outputs.name }}-presentation.pdf
+          path: main-presentation.pdf
+      - name: Upload static PDF as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ steps.name.outputs.name }}-static.pdf
+          path: main-static.pdf
       - name: Create a new release
         uses: actions/create-release@v1
         id: create_release
@@ -41,21 +54,39 @@ jobs:
         with:
           release_name: ${{ steps.name.outputs.name }}
           tag_name: ${{ steps.name.outputs.name }}
-      - name: Upload the paper to the release
+      - name: Upload the presentation slides to the release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: main.pdf
-          asset_name: ${{ github.event.repository.name}}-${{ steps.name.outputs.name }}.pdf
+          asset_path: main-presentation.pdf
+          asset_name: ${{ github.event.repository.name}}-presentation-${{ steps.name.outputs.name }}.pdf
           asset_content_type: pdf
-      - name: Upload the zip to the release
+      - name: Upload the static slides to the release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ${{ github.event.repository.name }}.zip
-          asset_name: ${{ github.event.repository.name }}-${{ steps.name.outputs.name }}.zip
+          asset_path: main-static.pdf
+          asset_name: ${{ github.event.repository.name}}-static-${{ steps.name.outputs.name }}.pdf
+          asset_content_type: pdf
+      - name: Upload the presentation zip to the release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ${{ github.event.repository.name }}-presentation.zip
+          asset_name: ${{ github.event.repository.name }}-presentation-${{ steps.name.outputs.name }}.zip
+          asset_content_type: zip
+      - name: Upload the static zip to the release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ${{ github.event.repository.name }}-static.zip
+          asset_name: ${{ github.event.repository.name }}-static-${{ steps.name.outputs.name }}.zip
           asset_content_type: zip

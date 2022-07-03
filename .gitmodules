@@ -1,6 +1,3 @@
-[submodule "tikz"]
-	path = tikz
-	url = git@github.com:georgejkaye/tikz.git
 [submodule "figures"]
 	path = figures
 	url = git@github.com:georgejkaye/figures.git

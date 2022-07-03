@@ -1,0 +1,48 @@
+% !TeX root = main-presentation.tex
+\usepackage{ figures/tikzit }
+
+\usetheme[
+  background=light,
+  numbering=counter,
+  block=fill,
+  %sectionpage=simple
+]{metropolis}
+
+\input{figures/circuits.tikzstyles}
+\input{figures/circuits.tikzdefs}
+
+% FiraFonts
+\usepackage[sfdefault]{FiraSans}
+\usepackage{FiraMono}
+% Use thinner fonts
+\makeatletter
+\def\bfseries@sf{medium}
+\def\mdseries@sf{l}
+\makeatother
+
+\definecolor{backg}{RGB}{9,72,61}
+\definecolor{accent}{RGB}{0,150,136}
+
+\definecolor{dracback}{RGB}{40, 42, 54}
+\definecolor{dracfore}{RGB}{248, 248, 242}
+\definecolor{dractitle}{RGB}{56, 58, 89}
+\definecolor{dracblock}{RGB}{98, 114, 164}
+\definecolor{draccent}{RGB}{255, 121, 198}
+
+\setbeamercolor{normal text}{bg=dracfore}
+\setbeamercolor{frametitle}{bg=dractitle, fg=dracfore}
+\setbeamercolor{title separator}{fg=draccent}
+\setbeamercolor{progress bar}{fg=draccent, bg=draccent}
+\setbeamercolor{block title}{fg=dracfore, bg=dracblock}
+\setbeamercolor{alerted text}{fg=draccent}
+
+\newtheorem{proposition}{Proposition}
+
+\title{Fully abstract categorical semantics for digital circuits}
+\author{\texorpdfstring{\large\textbf{George Kaye}, David Sprunger and Dan Ghica \\ \normalsize University of Birmingham}{George Kaye}}
+\institute{ACT 2022}
+\date{18 July 2022}
+
+\begin{document}
+    \maketitle
+\end{document}
