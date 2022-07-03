@@ -1,0 +1,23 @@
+name: Compile project
+on: 
+  push:
+     branches-ignore:
+       - main   
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    if: "github.event.repository.name != 'latex-template'"
+    steps:
+      - name: Set up repository
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Compile latex document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex
+      - name: Upload PDF as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ steps.name.outputs.name }}.pdf
+          path: main.pdf

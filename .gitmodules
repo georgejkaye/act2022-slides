@@ -1,0 +1,15 @@
+[submodule "tikz"]
+	path = tikz
+	url = git@github.com:georgejkaye/tikz.git
+[submodule "figures"]
+	path = figures
+	url = git@github.com:georgejkaye/figures.git
+[submodule "refs"]
+	path = refs
+	url = git@github.com:georgejkaye/refs.git
+[submodule "macros"]
+	path = macros
+	url = git@github.com:georgejkaye/macros.git
+[submodule "latex-scripts"]
+	path = latex-scripts
+	url = git@github.com:georgejkaye/latex-scripts.git

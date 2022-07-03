@@ -1,0 +1,30 @@
+# vs code
+/.vscode/
+
+# latex
+*/svg-inkscape/
+*.synctex(busy)
+*.synctex.gz
+*.aux
+*.blg
+*.log
+*.fdb_latexmk
+*.bbl
+*.out
+*.fls
+*.run.xml
+*.bcf
+*/_minted-*/
+*.pdf
+*.pygtext
+*.pygstyle
+*.nav
+*.snm
+*.toc
+*.xcp
+*.dvi
+*.pdf_tex
+*.vtc
+*/.metals/
+*/release/
+*zip

@@ -1,0 +1,33 @@
+name: Init project
+on:
+  push:
+    branches:
+      - main
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    permissions: read-all|write-all
+    # This is a hack, but I couldn't get on: create to work so here we are
+    if: "github.event.repository.name != 'latex-template' && startsWith(github.event.head_commit.message, 'Initial commit')"
+    steps:
+      - name: Set up the repository
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Set up python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Update submodules
+        run: |
+          git submodule foreach git reset --hard origin/main
+          git submodule foreach git pull origin main
+      - name: Generate initial latex file
+        run: python ./latex-scripts/src/init.py ${{ github.event.repository.name }} ${{ github.event.pusher.name }}
+      - name: Commit the changes
+        uses: github-actions-x/commit@v2.9
+        with:
+          commit-message: "Add initial latex file and update submodules"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ github.event.pusher.name }}
+          email: ${{ github.event.pusher.email }}
