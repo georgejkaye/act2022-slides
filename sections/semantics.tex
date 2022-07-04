@@ -1,0 +1,57 @@
+\section{Semantics}
+
+\begin{frame}
+    \frametitle{Interpretation}
+
+    Values are interpreted in a \alert{lattice} \(\values\):
+
+    \begin{minipage}{0.49\textwidth}
+        \[
+            \tikzfig{circuits/a4}
+        \]
+    \end{minipage}
+    \begin{minipage}{0.49\textwidth}
+        \begin{align*}
+            \tikzfig{circuits/components/values/false} 
+            \,&\mapsto\, 0 \\
+            \tikzfig{circuits/components/values/true} 
+            \,&\mapsto\, 1 \\
+            \tikzfig{strings/structure/monoid/init} 
+            \,&\mapsto\, \bot \\
+            \tikzfig{strings/structure/monoid/init-white} 
+            \,&\mapsto\, \top \\
+        \end{align*}
+    \end{minipage}
+
+    Gates are interpreted as \alert{monotone functions} \(\morph{\overline{g}}{\valuetuple{m}}{\values}\).
+\end{frame}
+
+\begin{frame}
+    \frametitle{Streams}
+
+    The semantics of circuits is that of \alert{stream functions}.
+
+    \pause
+
+    A \alert{stream} \(\stream{\values}\) is an infinite sequence of values.
+    
+    \pause
+    
+    A \alert{stream function} \(\morph{f}{\stream{(\valuetuple{m})}}{\stream{(\valuetuple{n})}}\) consumes and produces streams.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Stream functions}
+
+    Not all stream functions correspond to stream functions.
+
+    \alert{Causal}: The \(i\)th element of a stream can only depend on the first \(i+1\) inputs.
+
+    \alert{Monotone}: Computing the \(i\)th element of a stream is a monotone function.
+
+    \alert{`Finite'}: After some prefix \(p\), computing the \(p+i\)th element of a stream is the same as computing the \(p+i+j\)th element.
+
+    \begin{theorem}
+        Every monotone causal `finite' stream function with corresponds to a class of sequential circuits. 
+    \end{theorem}
+\end{frame}

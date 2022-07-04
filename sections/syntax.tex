@@ -1,0 +1,108 @@
+\section{Syntax}
+
+\begin{frame}
+    \frametitle{Combinational circuit components}
+
+    \renewcommand{\arraystretch}{1.25}
+
+    \vspace{1em}
+    \pause
+    \begin{minipage}{0.33\textwidth}
+        \centering
+
+        \alert{Values}
+
+        \vspace{1em}
+
+        \begin{tabular}{rl}
+            \tikzfig{circuits/components/values/false} &
+            false \\
+            \tikzfig{circuits/components/values/true} &
+            true \\
+            \tikzfig{strings/structure/monoid/init} &
+            disconnected \\
+            \tikzfig{strings/structure/monoid/init-white} &
+            short circuit \\
+        \end{tabular}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.33\textwidth}
+        \centering
+        \alert{Gates}
+
+        \renewcommand{\arraystretch}{2}
+
+        \vspace{1em}
+    
+        \begin{tabular}{rl}
+            \tikzfig{circuits/components/gates/and} &
+            AND gate \\
+            \tikzfig{circuits/components/gates/or} &
+            OR gate \\
+            \tikzfig{circuits/components/gates/not} &
+            NOT gate \\
+        \end{tabular}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \alert{Structure}
+
+        \vspace{1em}
+        
+        \renewcommand{\arraystretch}{1.75}
+        \begin{tabular}{cl}
+            \tikzfig{strings/structure/comonoid/copy} &
+            copy \\
+            \tikzfig{strings/structure/monoid/merge} &
+            join \\
+            \tikzfig{strings/structure/comonoid/discard} &
+            stub \\
+        \end{tabular}
+    \end{minipage}
+
+    \vspace{1em}
+
+    \begin{center}
+        \alert{Light} circuits \(\tikzfig{circuits/components/circuits/f-comb}\) only contain gates and structure.
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Sequential circuit components}
+
+    \begin{minipage}{0.33\textwidth}
+        \centering
+        \alert{Delay}
+
+        \[
+            \tikzfig{circuits/components/delay}    
+        \]
+    \end{minipage}
+    \begin{minipage}{0.66\textwidth}
+        \centering
+        \alert{Feedback}
+
+        \[
+            \tikzfig{circuits/components/circuits/f-seq-2-2}
+            \,\,\Rightarrow\,\,    
+            \tikzfig{circuits/components/circuits/f-seq-traced}
+        \]
+    \end{minipage}
+
+    \vspace{1em}
+
+    \begin{center}
+        \alert{Dark} circuits \(\tikzfig{circuits/components/circuits/f-seq}\) may contain delay or feedback.        
+    \end{center}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Circuit morphisms}
+
+    Circuits are morphisms in a \alert{symmetric traced monoidal category} freely generated over the generators we have seen.
+
+    [put a picture here]
+
+\end{frame}

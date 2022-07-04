@@ -1,0 +1,64 @@
+% !TeX root = ../main-presentation.tex
+\begin{frame}
+    \frametitle{Joint work with...}
+
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.5\textwidth]{sprunger}
+        
+        David Sprunger
+    \end{minipage}
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.5\textwidth]{ghica}
+        
+        Dan Ghica
+    \end{minipage}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction}
+    
+    Digital circuits are everywhere!
+
+    \pause
+
+    How do we reason with them?
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction}
+
+    Generally by \alert{simulation}.
+
+    \pause
+
+    Reasoning in \alert{software} is more \alert{reduction-based}:
+
+    \[
+        (\lambda x.\lambda y.\, x + y) \, 2 \, 5 
+        \pause\
+        \rightsquigarrow_{\beta}
+        \
+        (\lambda y. 2 + y) \, 5 
+        \pause\
+        \rightsquigarrow_{\beta}
+        \
+        2 + 5 
+        \pause\
+        \rightsquigarrow_{\eta}
+        \
+        7
+    \]
+
+    We want something similar for hardware.
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
+
+    
+
+\end{frame}

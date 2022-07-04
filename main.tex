@@ -1,5 +1,13 @@
 % !TeX root = main-presentation.tex
-\usepackage{ figures/tikzit }
+\usepackage{figures/tikzit}
+\usepackage{graphicx}
+
+\input{macros/sets}
+\input{macros/category}
+\input{macros/circuits}
+\input{macros/streams}
+
+\graphicspath{{./imgs/}}
 
 \usetheme[
   background=light,
@@ -45,4 +53,9 @@
 
 \begin{document}
     \maketitle
+
+    \input{sections/intro}
+    \input{sections/syntax}
+    \input{sections/semantics}
+    \input{sections/equational}
 \end{document}
