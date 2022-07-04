@@ -1,17 +1,70 @@
 \section{Equational reasoning}
 
 \begin{frame}
-    \frametitle{Extensional eq\}
+    \frametitle{Equality of circuits}
+
+    When are two circuits equal?
+
+    \pause
+
+    When they have the same \alert{beahviour}.
+
+    \pause
+
+    \[
+        \tikzfig{circuits/examples/demorgan-lhs} 
+        \quad
+        \tikzfig{circuits/examples/demorgan-rhs} 
+    \]
+
+    When they have the same \alert{stream function}.
+
+    \pause
+
+    But reasoning with streams is a \alert{pain}.
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Equational reasoning}
+
+    We want to reason \alert{equationally}.
+
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Combinational equations}
+    \setlength{\jot}{2em}
+    \pause
+    \begin{center}
+        \[
+            \tikzfig{circuits/axioms/gate-lhs}
+            \,=\,
+            \tikzfig{circuits/axioms/gate-rhs}  
+            \pause
+            \qquad
+            \tikzfig{strings/cartesian/naturality-copy-lhs}
+            \,=\,
+            \tikzfig{strings/cartesian/naturality-copy-rhs}
+        \]\[
+            \pause
+            \tikzfig{circuits/axioms/join-lhs}
+            \,=\,
+            \tikzfig{circuits/axioms/join-rhs}
+            \pause
+            \qquad
+            \tikzfig{strings/cartesian/naturality-discard-lhs}
+            \,=\,
+            \tikzfig{strings/cartesian/naturality-discard-rhs}
+        \]
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
 
     
 
 \end{frame}
-When are two circuits equal?
-
-\pause
-
-When they have the same stream function.
-
-\pause
-
-But reasoning with streams is a \alert{pain}.
