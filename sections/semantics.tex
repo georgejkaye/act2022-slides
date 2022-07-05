@@ -22,14 +22,22 @@
             \,&\mapsto\, \top \\
         \end{align*}
     \end{minipage}
+\end{frame}
 
-    \pause
+\begin{frame}
+    \frametitle{Interpretation}
 
-    Gates are interpreted as \alert{monotone functions} \(\morph{\overline{g}}{\valuetuple{m}}{\values}\).
+    \setlength{\tabcolsep}{1em}
+    \renewcommand{\arraystretch}{2}
 
-    \pause
-
-    The join \(\tikzfig{strings/structure/monoid/merge}\) is interpreted as the \alert{join in the lattice}.
+    \begin{center}
+        \begin{tabular}{ll}
+            \tikzfig{circuits/components/gates/gate} & \alert{monotone functions} \(\morph{\overline{g}}{\valuetuple{m}}{\values}\) \\ \pause
+            \tikzfig{strings/structure/comonoid/copy} & \alert{copy} \(x \mapsto (x, x)\) \\ \pause
+            \tikzfig{strings/structure/monoid/merge} & \alert{join in the lattice} \((x, y) \mapsto x \ljoin y\) \\ \pause
+            \tikzfig{strings/structure/comonoid/discard} & \alert{discard} \(x \mapsto \bullet\)
+        \end{tabular}
+    \end{center}
 \end{frame}
 
 \begin{frame}
@@ -44,6 +52,10 @@
     \pause
     
     A \alert{stream function} \(\morph{f}{\stream{(\valuetuple{m})}}{\stream{(\valuetuple{n})}}\) consumes and produces streams.
+
+    \pause
+
+    For stream \(\sigma\), \(\sigma(i)\) is the \alert{\(i\)th element}.
 
 \end{frame}
 

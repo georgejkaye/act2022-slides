@@ -30,7 +30,21 @@
 
     We want to reason \alert{equationally}.
 
+\end{frame}
 
+\begin{frame}
+    \frametitle{Productivity}
+
+
+    A circuit is \alert{productive} if it can be reduced to an \alert{instant value} and a \alert{delayed subcircuit}.
+
+    \[
+        \tikzfig{circuits/components/circuits/f-seq-closed}
+        \quad
+        =
+        \quad    
+        \tikzfig{circuits/productivity/productive}
+    \]
 
 \end{frame}
 
@@ -41,30 +55,72 @@
     \begin{center}
         \[
             \tikzfig{circuits/axioms/gate-lhs}
-            \,=\,
+            \quad=\quad
             \tikzfig{circuits/axioms/gate-rhs}  
             \pause
             \qquad
             \tikzfig{strings/cartesian/naturality-copy-lhs}
-            \,=\,
+            \quad=\quad
             \tikzfig{strings/cartesian/naturality-copy-rhs}
         \]\[
             \pause
             \tikzfig{circuits/axioms/join-lhs}
-            \,=\,
+            \quad=\quad
             \tikzfig{circuits/axioms/join-rhs}
             \pause
             \qquad
             \tikzfig{strings/cartesian/naturality-discard-lhs}
-            \,=\,
+            \quad=\quad
             \tikzfig{strings/cartesian/naturality-discard-rhs}
+            \pause
+            \qquad
+            \tikzfig{strings/structure/comonoid/unitality-r-lhs}
+            \quad=\quad
+            \tikzfig{strings/structure/comonoid/unitality-r-rhs}
         \]
     \end{center}
 \end{frame}
 
 \begin{frame}
-    \frametitle{}
+    \frametitle{Unfolding}
 
+    \[
+        \tikzfig{strings/traced/trace-rhs.seq} 
+        \quad=\quad
+        \tikzfig{circuits/examples/reasoning/unfolding/unfolding-1}
+    \]
+    \[
+        \quad=\quad
+        \tikzfig{circuits/examples/reasoning/unfolding/unfolding-2}
+        \quad=\quad
+        \tikzfig{circuits/examples/reasoning/unfolding/unfolding-3}
+    \]
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Sequential equations}
+
+    \[
+        \tikzfig{circuits/axioms/streaming-lhs-verbose}
+        \quad=\quad
+        \tikzfig{circuits/axioms/streaming-rhs}    
+    \]
+\end{frame}
+
+\begin{frame}
+    \frametitle{Instant feedback?}
+
+    A circuit has \alert{delay-guarded feedback} if it is in the form \alert{up to axioms of STMCs}. 
+
+    \[
+        \tikzfig{circuits/productivity/delay-guarded}  
+    \]
+
+    \[
+        \tikzfig{circuits/components/circuits/f-seq-traced}    
+    \]
     
+
 
 \end{frame}
