@@ -19,6 +19,7 @@
             false \\
             \tikzfig{circuits/components/values/true} &
             true \\
+            \pause
             \tikzfig{strings/structure/monoid/init} &
             disconnected \\
             \tikzfig{strings/structure/monoid/init-white} &
@@ -52,10 +53,13 @@
         
         \renewcommand{\arraystretch}{1.75}
         \begin{tabular}{cl}
+            \pause
             \tikzfig{strings/structure/comonoid/copy} &
             copy \\
+            \pause
             \tikzfig{strings/structure/monoid/merge} &
             join \\
+            \pause
             \tikzfig{strings/structure/comonoid/discard} &
             stub \\
         \end{tabular}
@@ -71,6 +75,8 @@
 \begin{frame}
     \frametitle{Sequential circuit components}
 
+    \pause
+
     \begin{minipage}{0.33\textwidth}
         \centering
         \alert{Delay}
@@ -79,6 +85,7 @@
             \tikzfig{circuits/components/delay}    
         \]
     \end{minipage}
+    \pause
     \begin{minipage}{0.66\textwidth}
         \centering
         \alert{Feedback}
@@ -92,6 +99,8 @@
 
     \vspace{1em}
 
+    \pause
+
     \begin{center}
         \alert{Dark} circuits \(\tikzfig{circuits/components/circuits/f-seq}\) may contain delay or feedback.        
     \end{center}
@@ -103,6 +112,8 @@
 
     Circuits are morphisms in a \alert{symmetric traced monoidal category} freely generated over the generators we have seen.
 
-    [put a picture here]
+    \[
+        \tikzfig{circuits/examples/simple-and}  
+    \]
 
 \end{frame}

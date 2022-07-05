@@ -23,11 +23,17 @@
         \end{align*}
     \end{minipage}
 
+    \pause
+
     Gates are interpreted as \alert{monotone functions} \(\morph{\overline{g}}{\valuetuple{m}}{\values}\).
+
+    \pause
+
+    The join \(\tikzfig{strings/structure/monoid/merge}\) is interpreted as the \alert{join in the lattice}.
 \end{frame}
 
 \begin{frame}
-    \frametitle{Streams}
+    \frametitle{Stream functions}
 
     The semantics of circuits is that of \alert{stream functions}.
 
@@ -38,20 +44,150 @@
     \pause
     
     A \alert{stream function} \(\morph{f}{\stream{(\valuetuple{m})}}{\stream{(\valuetuple{n})}}\) consumes and produces streams.
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Components as streams}
+
+    \setlength{\tabcolsep}{1em}
+    \renewcommand{\arraystretch}{2}
+
+    \begin{center}
+        \begin{tabular}{cll}
+            \tikzfig{circuits/components/values/v} & \pause \(f(\bullet)(0) = v\) & \pause \(f(\bullet)(k+1) = \bot\) \\ \pause
+            \tikzfig{circuits/components/gates/gate} & \pause \(f(\sigma)(k) = \overline{g}(\sigma(k))\) &  \\ \pause
+            \tikzfig{circuits/components/delay} & \pause \(f(\sigma)(0) = \bot\) & \pause \(f(\sigma)(k+1) = \sigma(k)\)
+        \end{tabular}
+    \end{center}
+    
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Stream functions: example}
+
+        \[
+            \morph{f}{\stream{\values}}{\stream{\values}} := \circuittostream[\tikzfig{circuits/examples/simple-and}]{}
+        \]
+
+        \vspace{1em}
+
+        \pause
+        \[
+            f(\sigma)(i) =
+            \begin{cases}
+                \pause 1 \land \sigma(0) & i = 0 \\
+                \pause f(\sigma)(k) \land \sigma(k+1) & i = k+1
+                
+            \end{cases}
+        \]
 \end{frame}
 
 \begin{frame}
     \frametitle{Stream functions}
 
-    Not all stream functions correspond to stream functions.
+    Not all stream functions correspond to sequential circuits...
+    
+\end{frame}
 
-    \alert{Causal}: The \(i\)th element of a stream can only depend on the first \(i+1\) inputs.
+\begin{frame}
+    \frametitle{Causal stream functions}
 
-    \alert{Monotone}: Computing the \(i\)th element of a stream is a monotone function.
+    Circuits cannot depend on \alert{future inputs}.
 
-    \alert{`Finite'}: After some prefix \(p\), computing the \(p+i\)th element of a stream is the same as computing the \(p+i+j\)th element.
+    \pause
 
+    A stream function is \alert{causal} when the \(i\)th element of the output stream can only depend on the first \(i+1\) inputs.
+
+    \pause
+
+    \begin{center}
+        \(
+            \circuittostream[\tikzfig{circuits/examples/simple-and}]{}
+        \)
+        \qquad
+        \(
+            f(\sigma)(i) =
+            \begin{cases}
+                1 \land \sigma(0) & i = 0 \\
+                f(\sigma)(k) \land \sigma(k+1) & i = k+1
+                
+            \end{cases}
+        \)
+    \end{center}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Monotone stream functions}
+
+    Components in circuits are \alert{monotone}.
+
+    A stream function is \alert{monotone} when computing each element of the output stream is a monotone function.
+
+    \begin{center}
+        \(
+            \circuittostream[\tikzfig{circuits/examples/simple-and}]{}
+        \)
+        \qquad
+        \(
+            f(\sigma)(i) =
+            \begin{cases}
+                1 \land \sigma(0) & i = 0 \\
+                f(\sigma)(k) \land \sigma(k+1) & i = k+1
+                
+            \end{cases}
+        \)
+    \end{center}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{`Finite' stream functions}
+
+    Circuits contain only a finite number of components.
+
+    A stream function with \alert{finitely many stream derivatives} specifies finite behaviours given some inputs.
+
+    \vspace{1em}
+
+    \begin{center}
+        \(
+            \circuittostream[\tikzfig{circuits/examples/simple-and}]{}
+        \)
+        \qquad
+        \(
+            f(\sigma)(i) =
+            \begin{cases}
+                1 \land \sigma(0) & i = 0 \\
+                f(\sigma)(k) \land \sigma(k+1) & i = k+1
+                
+            \end{cases}
+        \)
+        \pause
+
+        \vspace{1.5em}
+
+        \(
+            f(0 \streamcons \sigma)(0) = 1 \land 0 = 0
+        \)
+        \pause
+
+        \(
+            f(0 \streamcons \sigma)(1) = f(0 \streamcons \sigma)(0) \land \sigma(0) = 0 \land \sigma(0) = 0
+        \)\pause
+        
+        \(
+            f(0 \streamcons \sigma)(2) = f(0 \streamcons \sigma)(1) \land \sigma(1) = 0 \land \sigma(1) = 0 = f(0 :: \sigma)(1)
+        \)
+    \end{center}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Stream functions for circuits}
     \begin{theorem}
-        Every monotone causal `finite' stream function with corresponds to a class of sequential circuits. 
+        Every monotone causal stream function with finitely many stream derivatives corresponds to a class of sequential circuits. 
     \end{theorem}
 \end{frame}
