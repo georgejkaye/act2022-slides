@@ -1,3 +1,4 @@
+% !TeX root = ../main-presentation.tex
 \section{Equational reasoning}
 
 \begin{frame}
@@ -5,11 +6,11 @@
 
     When are two circuits equal?
 
-    \pause
+    \wait
 
     When they have the same \alert{beahviour}.
 
-    \pause
+    \wait
 
     \[
         \tikzfig{circuits/examples/demorgan-lhs} 
@@ -19,7 +20,7 @@
 
     When they have the same \alert{stream function}.
 
-    \pause
+    \wait
 
     But reasoning with streams is a \alert{pain}.
     
@@ -36,7 +37,7 @@
     \frametitle{Productivity}
 
 
-    A circuit is \alert{productive} if it can be reduced to an \alert{instant value} and a \alert{delayed subcircuit}.
+    A closed circuit is \alert{productive} if it can be reduced to an \alert{instant value} and a \alert{delayed subcircuit}.
 
     \[
         \tikzfig{circuits/components/circuits/f-seq-closed}
@@ -51,40 +52,50 @@
 \begin{frame}
     \frametitle{Combinational equations}
     \setlength{\jot}{2em}
-    \pause
+    \wait
     \begin{center}
         \[
             \tikzfig{circuits/axioms/gate-lhs}
             \quad=\quad
             \tikzfig{circuits/axioms/gate-rhs}  
-            \pause
+            \wait
             \qquad
             \tikzfig{strings/cartesian/naturality-copy-lhs}
             \quad=\quad
             \tikzfig{strings/cartesian/naturality-copy-rhs}
         \]\[
-            \pause
+            \wait
             \tikzfig{circuits/axioms/join-lhs}
             \quad=\quad
             \tikzfig{circuits/axioms/join-rhs}
-            \pause
+            \wait
             \qquad
             \tikzfig{strings/cartesian/naturality-discard-lhs}
             \quad=\quad
             \tikzfig{strings/cartesian/naturality-discard-rhs}
-            \pause
-            \qquad
+            \wait
+        \]\[
             \tikzfig{strings/structure/comonoid/unitality-r-lhs}
             \quad=\quad
             \tikzfig{strings/structure/comonoid/unitality-r-rhs}
+            \quad=\quad
+            \tikzfig{strings/structure/comonoid/unitality-l-lhs}
         \]
     \end{center}
+
+    \wait
+    These reduce any \alert{closed combinational circuit} \(\tikzfig{circuits/components/circuits/f-comb-applied}\) to \(\tikzfig{circuits/components/values/ws}\).
+
 \end{frame}
 
 \begin{frame}
     \frametitle{Sequential equations}
 
     \[
+        \tikzfig{circuits/axioms/disconnect-lhs}
+        \quad=\quad
+        \tikzfig{circuits/axioms/disconnect-rhs}    
+        \qquad\wait
         \tikzfig{circuits/axioms/streaming-lhs-verbose}
         \quad=\quad
         \tikzfig{circuits/axioms/streaming-rhs}    
@@ -92,88 +103,234 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Instant feedback?}
+    \frametitle{Non delay-guarded feedback}
 
-    A circuit has \alert{delay-guarded feedback} if it is in the form \alert{up to axioms of STMCs}. 
-
-    \[
-        \tikzfig{circuits/productivity/delay-guarded}  
-    \]
+    How de we deal with something like this?
 
     \[
-        \tikzfig{circuits/components/circuits/f-seq-traced}    
+        \tikzfig{circuits/productivity/trand}   
     \]
-    
 
+    \wait
+
+    We need a way to eliminate \alert{non delay-guarded feedback}.
+
+    \[
+        \tikzfig{circuits/components/circuits/f-seq-traced}  
+    \]
 
 \end{frame}
 
 \begin{frame}
-    \frametitle{Unfolding delay-guarded feedback}
+    \frametitle{Non delay-guarded feedback}
+
+    \wait
+
+    Our gates are \alert{monotonic}, so they must have a \alert{least fixed point}...
+    
+    \[f^i(\bot) = f^{i+1}(\bot)\]
+
+    \wait
+
+    Because the value set \(\values\) is finite, we can always find this fixpoint!    
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Non delay-guarded feedback}
+
+    \(
+        \tikzfig{circuits/a4}    
+    \)
+    \quad
+    In \(\values\), the length of the longest chain is \alert{3}...
+
+    \wait
+
+    \[
+        \tikzfig{circuits/components/circuits/f-seq-traced}
+        \quad=\quad
+        \tikzfig{circuits/instant-feedback/concrete-unfolding}
+    \]
+    
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Eliminating `instant' feedback}
+
+    \begin{center}
+        \begin{minipage}{0.25\textwidth}
+            \tikzfig{circuits/productivity/trand} 
+            \quad\(=\)
+        \end{minipage}
+        \begin{minipage}{0.4\textwidth}
+            \only<1>{
+                \begin{center}
+                    \tikzfig{circuits/examples/trand/step-1}
+                \end{center}
+            } 
+            \only<2>{
+                \begin{center}
+                    \tikzfig{circuits/examples/trand/step-2}
+                \end{center}
+            }
+            \only<3>{
+                \begin{center}
+                    \tikzfig{circuits/examples/trand/step-3}
+                \end{center}
+            }
+            \only<4>{
+                \begin{center}
+                    \tikzfig{circuits/examples/trand/step-4}
+                \end{center}
+            }
+        \end{minipage}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Productivity}
+
+    Now \alert{any} closed circuit is productive!
+
 
     \only<1>{
         \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-1}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-0}
         \end{center}
     }
     \only<2>{
         \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-2}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-0a}
         \end{center}
     }
     \only<3>{
         \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-3}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-1}
         \end{center}
     }
     \only<4>{
         \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-4}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-2}
         \end{center}
     }
     \only<5>{
         \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-5}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-3}
         \end{center}
     }
     \only<6>{
         \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-6}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-4}
         \end{center}
     }
     \only<7>{
         \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-7}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-5}
         \end{center}
     }
     \only<8>{
         \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-8}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-6}
         \end{center}
     }
     \only<9>{
         \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-9}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-7}
         \end{center}
     }
     \only<10>{
         \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-10}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-8}
         \end{center}
     }
     \only<11>{
         \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-11}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-9}
         \end{center}
     }
     \only<12>{
         \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-12}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-10}
         \end{center}
     }
     \only<13>{
         \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-11}
+        \end{center}
+    }
+    \only<14>{
+        \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-12}
+        \end{center}
+    }
+    \only<15>{
+        \begin{center}
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-13}
         \end{center}
     }
+\end{frame}
+
+\begin{frame}
+    \frametitle{Open circuits}
+
+    We still cannot necessarily translate between \alert{open} circuits with the same behaviour.
+
+    \[
+        \tikzfig{circuits/examples/demorgan-lhs} 
+        \quad
+        \tikzfig{circuits/examples/demorgan-rhs} 
+    \]
+
+    We need another equation.
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Open circuits}
+
+    When do these have the \alert{same stream}?
+
+    \[
+        \tikzfig{circuits/components/circuits/f-seq}
+        \qquad
+        \tikzfig{circuits/components/circuits/g-seq}
+    \]
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Open circuits}
+
+    When do these have the \alert{same stream}?
+
+    \[
+        \tikzfig{circuits/components/circuits/f-seq}
+        \quad=\quad
+        \tikzfig{circuits/full-abstraction/global-delay-f}
+        \qquad
+        \tikzfig{circuits/components/circuits/g-seq}
+        \quad=\quad
+        \tikzfig{circuits/full-abstraction/global-delay-g}
+    \]
+    
+    The outputs of \(\tikzfig{circuits/components/circuits/f-pre-trace-unlabelled}\) and \(\tikzfig{circuits/components/circuits/g-pre-trace-unlabelled}\) are the \alert{transition} and \alert{output}.
+
+    \alert{Idea}: for all \alert{transitions}, check that \alert{outputs} are equal.
+
+    \tiny{(cf. Mealy machine bisimulation)}
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
+
+    Check the \alert{initial output}...
+
+    \begin{center}
+        
+
+    \end{center}
+    
+
 \end{frame}

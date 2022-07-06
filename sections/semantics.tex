@@ -32,9 +32,9 @@
 
     \begin{center}
         \begin{tabular}{ll}
-            \tikzfig{circuits/components/gates/gate} & \alert{monotone functions} \(\morph{\overline{g}}{\valuetuple{m}}{\values}\) \\ \pause
-            \tikzfig{strings/structure/comonoid/copy} & \alert{copy} \(x \mapsto (x, x)\) \\ \pause
-            \tikzfig{strings/structure/monoid/merge} & \alert{join in the lattice} \((x, y) \mapsto x \ljoin y\) \\ \pause
+            \tikzfig{circuits/components/gates/gate} & \alert{monotone functions} \(\morph{\overline{g}}{\valuetuple{m}}{\values}\) \\ \wait
+            \tikzfig{strings/structure/comonoid/copy} & \alert{copy} \(x \mapsto (x, x)\) \\ \wait
+            \tikzfig{strings/structure/monoid/merge} & \alert{join in the lattice} \((x, y) \mapsto x \ljoin y\) \\ \wait
             \tikzfig{strings/structure/comonoid/discard} & \alert{discard} \(x \mapsto \bullet\)
         \end{tabular}
     \end{center}
@@ -45,15 +45,15 @@
 
     The semantics of circuits is that of \alert{stream functions}.
 
-    \pause
+    \wait
 
     A \alert{stream} \(\stream{\values}\) is an infinite sequence of values.
     
-    \pause
+    \wait
     
     A \alert{stream function} \(\morph{f}{\stream{(\valuetuple{m})}}{\stream{(\valuetuple{n})}}\) consumes and produces streams.
 
-    \pause
+    \wait
 
     For stream \(\sigma\), \(\sigma(i)\) is the \alert{\(i\)th element}.
 
@@ -67,9 +67,9 @@
 
     \begin{center}
         \begin{tabular}{cll}
-            \tikzfig{circuits/components/values/v} & \pause \(f(\bullet)(0) = v\) & \pause \(f(\bullet)(k+1) = \bot\) \\ \pause
-            \tikzfig{circuits/components/gates/gate} & \pause \(f(\sigma)(k) = \overline{g}(\sigma(k))\) &  \\ \pause
-            \tikzfig{circuits/components/delay} & \pause \(f(\sigma)(0) = \bot\) & \pause \(f(\sigma)(k+1) = \sigma(k)\)
+            \tikzfig{circuits/components/values/v} & \wait \(f(\bullet)(0) = v\) & \wait \(f(\bullet)(k+1) = \bot\) \\ \wait
+            \tikzfig{circuits/components/gates/gate} & \wait \(f(\sigma)(k) = \overline{g}(\sigma(k))\) &  \\ \wait
+            \tikzfig{circuits/components/delay} & \wait \(f(\sigma)(0) = \bot\) & \wait \(f(\sigma)(k+1) = \sigma(k)\)
         \end{tabular}
     \end{center}
     
@@ -85,12 +85,12 @@
 
         \vspace{1em}
 
-        \pause
+        \wait
         \[
             f(\sigma)(i) =
             \begin{cases}
-                \pause 1 \land \sigma(0) & i = 0 \\
-                \pause f(\sigma)(k) \land \sigma(k+1) & i = k+1
+                \wait 1 \land \sigma(0) & i = 0 \\
+                \wait f(\sigma)(k) \land \sigma(k+1) & i = k+1
                 
             \end{cases}
         \]
@@ -108,11 +108,11 @@
 
     Circuits cannot depend on \alert{future inputs}.
 
-    \pause
+    \wait
 
     A stream function is \alert{causal} when the \(i\)th element of the output stream can only depend on the first \(i+1\) inputs.
 
-    \pause
+    \wait
 
     \begin{center}
         \(
@@ -177,18 +177,18 @@
                 
             \end{cases}
         \)
-        \pause
+        \wait
 
         \vspace{1.5em}
 
         \(
             f(0 \streamcons \sigma)(0) = 1 \land 0 = 0
         \)
-        \pause
+        \wait
 
         \(
             f(0 \streamcons \sigma)(1) = f(0 \streamcons \sigma)(0) \land \sigma(0) = 0 \land \sigma(0) = 0
-        \)\pause
+        \)\wait
         
         \(
             f(0 \streamcons \sigma)(2) = f(0 \streamcons \sigma)(1) \land \sigma(1) = 0 \land \sigma(1) = 0 = f(0 :: \sigma)(1)

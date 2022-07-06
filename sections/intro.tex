@@ -22,7 +22,7 @@
     
     Digital circuits are everywhere!
 
-    \pause
+    \wait
 
     How do we reason with them?
 
@@ -33,26 +33,26 @@
 
     Generally by \alert{simulation}.
 
-    \pause
+    \wait
 
     Reasoning in \alert{software} is more \alert{reduction-based}:
 
     \[
         (\lambda x.\lambda y.\, x + y) \, 2 \, 5 
-        \pause\
+        \wait\
         \rightsquigarrow_{\beta}
         \
         (\lambda y. 2 + y) \, 5 
-        \pause\
+        \wait\
         \rightsquigarrow_{\beta}
         \
         2 + 5 
-        \pause\
+        \wait\
         \rightsquigarrow_{\eta}
         \
         7
     \]
     
-    \pause
+    \wait
     We want something similar for hardware.
 \end{frame}
