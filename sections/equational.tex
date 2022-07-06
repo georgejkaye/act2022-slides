@@ -303,7 +303,7 @@
 \begin{frame}
     \frametitle{Open circuits}
 
-    When do these have the \alert{same stream}?
+    Put into \alert{global delay form}.
 
     \[
         \tikzfig{circuits/components/circuits/f-seq}
@@ -315,22 +315,163 @@
         \tikzfig{circuits/full-abstraction/global-delay-g}
     \]
     
-    The outputs of \(\tikzfig{circuits/components/circuits/f-pre-trace-unlabelled}\) and \(\tikzfig{circuits/components/circuits/g-pre-trace-unlabelled}\) are the \alert{transition} and \alert{output}.
+    Produces the \alert{state transition} and \alert{output} of the circuit.
 
-    \alert{Idea}: for all \alert{transitions}, check that \alert{outputs} are equal.
+    \pause
+
+    \alert{Idea}: for all \alert{accessible states}, if the \alert{outputs} are equal then the \alert{original circuits} are equal under the equational theory.
 
     \tiny{(cf. Mealy machine bisimulation)}
 \end{frame}
 
 \begin{frame}
-    \frametitle{}
+    \frametitle{Open circuits: example}
 
-    Check the \alert{initial output}...
+    \[
+        \tikzfig{circuits/examples/simple-and}    
+        \qquad
+        \tikzfig{circuits/examples/simple-or-nots}
+    \]
+
+    \pause
+
+    \[
+        \tikzfig{circuits/examples/open-circuit-example/f-core}    
+        \qquad
+        \tikzfig{circuits/examples/open-circuit-example/g-core}
+    \]
+
+    Initial states are \((\tikzfig{circuits/components/values/true}, \tikzfig{circuits/components/values/true})\).
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Open circuits: example}
+
+    Check the \alert{initial output} and \alert{transition}...
 
     \begin{center}
-        
-
+        \begin{minipage}{0.45\textwidth}
+            \only<1>{
+                \begin{center}
+                    \tikzfig{circuits/examples/open-circuit-example/init-f-0}
+                \end{center}
+            }
+            \only<2>{
+                \begin{center}
+                    \tikzfig{circuits/examples/open-circuit-example/init-f-1}
+                \end{center}
+            }
+            \only<3>{
+                \begin{center}
+                    \tikzfig{circuits/examples/open-circuit-example/init-f-2}
+                \end{center}
+            }
+            \only<4->{
+                \begin{center}
+                    \tikzfig{circuits/examples/open-circuit-example/init-f-3}
+                \end{center}
+            }
+        \end{minipage}
+        \begin{minipage}{0.45\textwidth}
+        \only<1-5>{
+            \begin{center}
+                \tikzfig{circuits/examples/open-circuit-example/init-g-0}
+            \end{center}
+        }
+        \only<6>{
+            \begin{center}
+                \tikzfig{circuits/examples/open-circuit-example/init-g-1}
+            \end{center}
+        }
+        \only<7>{
+            \begin{center}
+                \tikzfig{circuits/examples/open-circuit-example/init-g-2}
+            \end{center}
+        }
+        \only<8>{
+            \begin{center}
+                \tikzfig{circuits/examples/open-circuit-example/init-g-3}
+            \end{center}
+        }
+        \only<9>{
+            \begin{center}
+                \tikzfig{circuits/examples/open-circuit-example/init-g-4}
+            \end{center}
+        }
+        \only<10->{
+            \begin{center}
+                \tikzfig{circuits/examples/open-circuit-example/init-g-5}
+            \end{center}
+        }
+        \end{minipage}
     \end{center}
+
+    \visible<11->{
+
+        The \alert{next states} for each circuit are equal...
+
+        \begin{center}
+            \begin{minipage}{0.3\textwidth}
+                \only<1-11>{
+                    \begin{center}
+                        \tikzfig{circuits/examples/open-circuit-example/next-f-0}
+                    \end{center}
+                }
+                \only<12>{
+                    \begin{center}
+                        \tikzfig{circuits/examples/open-circuit-example/next-f-1}
+                    \end{center}
+                }
+                \only<13->{
+                    \begin{center}
+                        \tikzfig{circuits/examples/open-circuit-example/next-f-2}
+                    \end{center}
+                }
+            \end{minipage}
+            \begin{minipage}{0.3\textwidth}
+            \only<1-14>{
+                \begin{center}
+                    \tikzfig{circuits/examples/open-circuit-example/next-g-0}
+                \end{center}
+            }
+            \only<15>{
+                \begin{center}
+                    \tikzfig{circuits/examples/open-circuit-example/next-g-1}
+                \end{center}
+            }
+            \only<16>{
+                \begin{center}
+                    \tikzfig{circuits/examples/open-circuit-example/next-g-2}
+                \end{center}
+            }
+            \only<17>{
+                \begin{center}
+                    \tikzfig{circuits/examples/open-circuit-example/next-g-3}
+                \end{center}
+            }
+            \only<18>{
+                \begin{center}
+                    \tikzfig{circuits/examples/open-circuit-example/next-g-4}
+                \end{center}
+            }
+            \only<19->{
+                \begin{center}
+                    \tikzfig{circuits/examples/open-circuit-example/next-g-5}
+                \end{center}
+            }
+            \end{minipage}
+        \end{center}
+    }
+
+    \visible<20>{
+        So the original circuits are equal in the equational theory.
+    }
+\end{frame}
+
+\begin{frame}
+    \frametitle{Open circuits: example}
+
     
 
 \end{frame}
