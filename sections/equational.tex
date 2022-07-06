@@ -8,7 +8,7 @@
 
     \wait
 
-    When they have the same \alert{beahviour}.
+    When they have the same \alert{behviour}.
 
     \wait
 
@@ -17,6 +17,8 @@
         \quad
         \tikzfig{circuits/examples/demorgan-rhs} 
     \]
+
+    \wait
 
     When they have the same \alert{stream function}.
 
@@ -27,17 +29,17 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Equational reasoning}
-
-    We want to reason \alert{equationally}.
-
-\end{frame}
-
-\begin{frame}
     \frametitle{Productivity}
 
+    We want to reason \alert{equationally}: what equations do we need?
 
-    A closed circuit is \alert{productive} if it can be reduced to an \alert{instant value} and a \alert{delayed subcircuit}.
+    \wait
+
+    Key criteria: \alert{productivity}.
+
+    \wait
+
+    A closed circuit is \alert{productive} if it is equal to an \alert{instant value} and a \alert{delayed subcircuit} under the equational theory.
 
     \[
         \tikzfig{circuits/components/circuits/f-seq-closed}
@@ -75,7 +77,13 @@
             \tikzfig{strings/cartesian/naturality-discard-rhs}
             \wait
         \]\[
-            \tikzfig{strings/structure/comonoid/unitality-r-lhs}
+            \tikzfig{strings/structure/monoid/unitality-l-lhs}
+            \quad=\quad
+            \tikzfig{strings/structure/monoid/unitality-r-rhs}
+            \quad=\quad
+            \tikzfig{strings/structure/monoid/unitality-r-lhs}
+            \qquad\wait
+            \tikzfig{strings/structure/comonoid/unitality-l-lhs}
             \quad=\quad
             \tikzfig{strings/structure/comonoid/unitality-r-rhs}
             \quad=\quad
@@ -84,7 +92,7 @@
     \end{center}
 
     \wait
-    These reduce any \alert{closed combinational circuit} \(\tikzfig{circuits/components/circuits/f-comb-applied}\) to \(\tikzfig{circuits/components/values/ws}\).
+    These reduce any \alert{closed combinational circuit} \(\tikzfig{circuits/components/circuits/f-comb-applied}\) to some \(\tikzfig{circuits/components/values/ws}\).
 
 \end{frame}
 
@@ -105,7 +113,7 @@
 \begin{frame}
     \frametitle{Non delay-guarded feedback}
 
-    How de we deal with something like this?
+    How do we deal with something like this?
 
     \[
         \tikzfig{circuits/productivity/trand}   
@@ -127,8 +135,6 @@
     \wait
 
     Our gates are \alert{monotonic}, so they must have a \alert{least fixed point}...
-    
-    \[f^i(\bot) = f^{i+1}(\bot)\]
 
     \wait
 
@@ -143,12 +149,12 @@
         \tikzfig{circuits/a4}    
     \)
     \quad
-    In \(\values\), the length of the longest chain is \alert{3}...
+    In \(\values\), the length of the longest chain is \alert{2}...
 
     \wait
 
     \[
-        \tikzfig{circuits/components/circuits/f-seq-traced}
+        \tikzfig{circuits/components/circuits/f-comb-traced}
         \quad=\quad
         \tikzfig{circuits/instant-feedback/concrete-unfolding}
     \]
@@ -164,28 +170,30 @@
             \tikzfig{circuits/productivity/trand} 
             \quad\(=\)
         \end{minipage}
-        \begin{minipage}{0.4\textwidth}
-            \only<1>{
-                \begin{center}
-                    \tikzfig{circuits/examples/trand/step-1}
-                \end{center}
-            } 
-            \only<2>{
-                \begin{center}
-                    \tikzfig{circuits/examples/trand/step-2}
-                \end{center}
-            }
-            \only<3>{
-                \begin{center}
-                    \tikzfig{circuits/examples/trand/step-3}
-                \end{center}
-            }
-            \only<4>{
-                \begin{center}
-                    \tikzfig{circuits/examples/trand/step-4}
-                \end{center}
-            }
-        \end{minipage}
+        \visible<2->{
+            \begin{minipage}{0.4\textwidth}
+                \only<2>{
+                    \begin{center}
+                        \tikzfig{circuits/examples/trand/step-1}
+                    \end{center}
+                } 
+                \only<3>{
+                    \begin{center}
+                        \tikzfig{circuits/examples/trand/step-2}
+                    \end{center}
+                }
+                \only<4>{
+                    \begin{center}
+                        \tikzfig{circuits/examples/trand/step-3}
+                    \end{center}
+                }
+                \only<5>{
+                    \begin{center}
+                        \tikzfig{circuits/examples/trand/step-4}
+                    \end{center}
+                }
+            \end{minipage}
+        }
     \end{center}
 \end{frame}
 
@@ -265,23 +273,31 @@
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-12}
         \end{center}
     }
-    \only<15>{
+    \only<15->{
         \begin{center}
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-13}
         \end{center}
     }
+    \visible<16->{
+        We can keep applying this procedure to recover the elements of the \alert{corresponding stream}.
+    }
+
 \end{frame}
 
 \begin{frame}
     \frametitle{Open circuits}
 
-    We still cannot necessarily translate between \alert{open} circuits with the same behaviour.
+    We still cannot translate between \alert{open} circuits with the same behaviour.
+
+    \wait
 
     \[
         \tikzfig{circuits/examples/demorgan-lhs} 
         \quad
         \tikzfig{circuits/examples/demorgan-rhs} 
     \]
+
+    \wait
 
     We need another equation.
 
@@ -303,21 +319,17 @@
 \begin{frame}
     \frametitle{Open circuits}
 
-    Put into \alert{global delay form}.
-
     \[
         \tikzfig{circuits/components/circuits/f-seq}
-        \quad=\quad
+        \wait\quad=\quad
         \tikzfig{circuits/full-abstraction/global-delay-f}
-        \qquad
-        \tikzfig{circuits/components/circuits/g-seq}
-        \quad=\quad
-        \tikzfig{circuits/full-abstraction/global-delay-g}
     \]
     
-    Produces the \alert{state transition} and \alert{output} of the circuit.
+    \wait
 
-    \pause
+    The circuit \(\tikzfig{circuits/components/circuits/f-pre-trace-unlabelled}\) produces the \alert{state transition} and \alert{output} of \(\tikzfig{circuits/components/circuits/f-seq}\).
+
+    \wait
 
     \alert{Idea}: for all \alert{accessible states}, if the \alert{outputs} are equal then the \alert{original circuits} are equal under the equational theory.
 
@@ -328,27 +340,30 @@
     \frametitle{Open circuits: example}
 
     \[
+        \tikzfig{circuits/components/circuits/f-seq-unlabelled}
+        \,=\,
         \tikzfig{circuits/examples/simple-and}    
-        \qquad
+        \quad
+        \tikzfig{circuits/components/circuits/g-seq-unlabelled}
+        \,=\,
         \tikzfig{circuits/examples/simple-or-nots}
     \]
-
-    \pause
-
+    \wait
     \[
+        \tikzfig{circuits/components/circuits/f-pre-trace-unlabelled}
+        \,=\,
         \tikzfig{circuits/examples/open-circuit-example/f-core}    
         \qquad
+        \tikzfig{circuits/components/circuits/g-pre-trace-unlabelled}
+        \,=\,
         \tikzfig{circuits/examples/open-circuit-example/g-core}
     \]
-
-    Initial states are \((\tikzfig{circuits/components/values/true}, \tikzfig{circuits/components/values/true})\).
-
 \end{frame}
 
 \begin{frame}
     \frametitle{Open circuits: example}
 
-    Check the \alert{initial output} and \alert{transition}...
+    \alert{Initial state}...
 
     \begin{center}
         \begin{minipage}{0.45\textwidth}
@@ -409,7 +424,7 @@
 
     \visible<11->{
 
-        The \alert{next states} for each circuit are equal...
+        \alert{Next state}...
 
         \begin{center}
             \begin{minipage}{0.3\textwidth}
@@ -470,8 +485,48 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Open circuits: example}
+    \frametitle{Full abstraction}
 
-    
+    \begin{theorem}[]
+        \(
+            \tikzfig{circuits/components/circuits/f-seq} = \tikzfig{circuits/components/circuits/g-seq}
+        \)
+        if and only if their streams are equal.
+    \end{theorem}
+    \begin{proof}
+        \visible<2->{
+            \tikzfig{circuits/components/circuits/f-seq}
+        }
+        \visible<3->{
+            \(=\) \tikzfig{circuits/full-abstraction/global-delay-f}
+        }
+        \visible<4->{
+            \(=\)
+        }
+        \visible<3->{
+            \tikzfig{circuits/full-abstraction/global-delay-g} \(=\)
+        }
+        \visible<2->{
+            \tikzfig{circuits/components/circuits/g-seq}
+        }        
+    \end{proof}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Conclusion}
+
+    We have presented a \alert{categorical framework} for sequential circuits.
+
+    \wait
+
+    Sequential circuits have semantics as \alert{stream functions}, but it is easier to reason \alert{equationally}.
+
+    \wait
+
+    We have the equations to achieve \alert{full abstraction}, a correspondence between the syntactic and semantic frameworks.
+
+    \wait
+
+    We can even reason with circuits with \alert{non-delay-guarded feedback}!
 
 \end{frame}
