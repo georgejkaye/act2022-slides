@@ -31,28 +31,28 @@
 \begin{frame}
     \frametitle{Introduction}
 
-    Generally by \alert{simulation}.
+    Generally by \alert{simulation}
 
     \wait
 
     Reasoning in \alert{software} is more \alert{reduction-based}:
 
     \[
-        (\lambda x.\lambda y.\, x + y) \, 2 \, 5 
+        ((\lambda x.\lambda y.\, x + y) \, 2) \, 5 
         \wait\
-        \rightsquigarrow_{\beta}
+        =_{\beta}
         \
         (\lambda y. 2 + y) \, 5 
         \wait\
-        \rightsquigarrow_{\beta}
+        =_{\beta}
         \
         2 + 5 
         \wait\
-        \rightsquigarrow_{\eta}
+        =_{\eta}
         \
         7
     \]
     
     \wait
-    We want something similar for hardware.
+    We want an \alert{equational theory} for digital circuits
 \end{frame}

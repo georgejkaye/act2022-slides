@@ -3,6 +3,8 @@ SECTIONS=$(wildcard sections/*.tex)
 AUX=
 SOURCE=$(MAIN) $(SECTIONS) $(AUX)
 ROOTS=$(wildcard main-*.tex)
+FIGS=$(wildcard figs/*)
+REFS=$(wildcard refs/*.bib)
 
 .PHONY: clean all presentation static init
 
@@ -14,7 +16,7 @@ static: main-static.pdf
 init:
 	git submodule update --init
 
-main-%.pdf: main-%.tex $(MAIN) $(SECTIONS) $(AUX)
+main-%.pdf: main-%.tex $(MAIN) $(SECTIONS) $(AUX) $(REFS) $(FIGS)
 	latexmk -pdf $(basename $@).tex
 
 tidy:

@@ -61,45 +61,30 @@
 
     Not all stream functions correspond to sequential circuits...
 
+    \vspace{1em}
     \wait
 
-    Circuits cannot depend on \alert{future inputs}.
+    \begin{minipage}{0.3\textwidth}
+        \alert{Causal}
 
+        \small{Depends on past inputs}
+    \end{minipage}
+    \quad\wait
+    \begin{minipage}{0.3\textwidth}
+        \alert{Monotone}
+
+        \small{with respect to the lattice}\normalsize
+    \end{minipage}
+    \quad\wait
+    \begin{minipage}{0.3\textwidth}
+        \alert{`Finite'}
+
+        \small{Specifies finite behaviours}
+    \end{minipage}
+    
     \wait
 
-    A stream function is \alert{causal} when the \(i\)th element of the output stream can only depend on the first \(i+1\) inputs.
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{Monotone stream functions}
-
-    Components in circuits are \alert{monotone}.
-
-    \wait
-
-    A stream function is \alert{monotone} when computing each element of the output stream is a monotone function.
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{`Finite' stream functions}
-
-    Circuits contain only a finite number of components.
-
-    \wait
-
-    A stream function with \alert{finitely many stream derivatives} `specifies finite behaviours' given some inputs.
-
-    \wait
-
-    After a finite prefix, computing the \(i\)th element is the same as computing the \(p+i\)th element.
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{Stream functions for circuits}
     \begin{theorem}
-        Every monotone causal stream function with finitely many stream derivatives corresponds to a class of sequential circuits. 
+        Every monotone causal stream function with `finite behaviours' corresponds to a class of sequential circuits. 
     \end{theorem}
 \end{frame}

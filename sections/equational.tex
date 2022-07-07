@@ -5,10 +5,8 @@
     \frametitle{Equality of circuits}
 
     When are two circuits equal?
-
     \wait
-
-    When they have the same \alert{behviour}.
+    When they have the same \alert{behviour}
 
     \wait
 
@@ -20,11 +18,11 @@
 
     \wait
 
-    When they have the same \alert{stream function}.
+    When they have the same \alert{stream function}
 
     \wait
 
-    But reasoning with streams is a \alert{pain}.
+    Reasoning with streams is a \alert{pain}.
     
 \end{frame}
 
@@ -35,7 +33,7 @@
 
     \wait
 
-    Key criteria: \alert{productivity}.
+    First goal: \alert{productivity}.
 
     \wait
 
@@ -62,27 +60,29 @@
             \tikzfig{circuits/axioms/gate-rhs}  
             \wait
             \qquad
-            \tikzfig{strings/cartesian/naturality-copy-lhs}
-            \quad=\quad
-            \tikzfig{strings/cartesian/naturality-copy-rhs}
-        \]\[
-            \wait
             \tikzfig{circuits/axioms/join-lhs}
             \quad=\quad
             \tikzfig{circuits/axioms/join-rhs}
             \wait
+        \]
+        \[
+            \tikzfig{strings/cartesian/naturality-copy-lhs}
+            \quad=\quad
+            \tikzfig{strings/cartesian/naturality-copy-rhs}
             \qquad
+            \wait
             \tikzfig{strings/cartesian/naturality-discard-lhs}
             \quad=\quad
             \tikzfig{strings/cartesian/naturality-discard-rhs}
             \wait
-        \]\[
+        \]
+        \[
             \tikzfig{strings/structure/monoid/unitality-l-lhs}
             \quad=\quad
             \tikzfig{strings/structure/monoid/unitality-r-rhs}
             \quad=\quad
             \tikzfig{strings/structure/monoid/unitality-r-lhs}
-            \qquad\wait
+            \qquad
             \tikzfig{strings/structure/comonoid/unitality-l-lhs}
             \quad=\quad
             \tikzfig{strings/structure/comonoid/unitality-r-rhs}
@@ -98,7 +98,6 @@
 
 \begin{frame}
     \frametitle{Sequential equations}
-
     \[
         \tikzfig{circuits/axioms/disconnect-lhs}
         \quad=\quad
@@ -162,126 +161,152 @@
 
 \end{frame}
 
-\begin{frame}
-    \frametitle{Eliminating `instant' feedback}
-
-    \begin{center}
-        \begin{minipage}{0.25\textwidth}
-            \tikzfig{circuits/productivity/trand} 
-            \quad\(=\)
-        \end{minipage}
-        \visible<2->{
-            \begin{minipage}{0.4\textwidth}
-                \only<2>{
-                    \begin{center}
-                        \tikzfig{circuits/examples/trand/step-1}
-                    \end{center}
-                } 
-                \only<3>{
-                    \begin{center}
-                        \tikzfig{circuits/examples/trand/step-2}
-                    \end{center}
-                }
-                \only<4>{
-                    \begin{center}
-                        \tikzfig{circuits/examples/trand/step-3}
-                    \end{center}
-                }
-                \only<5>{
-                    \begin{center}
-                        \tikzfig{circuits/examples/trand/step-4}
-                    \end{center}
-                }
-            \end{minipage}
-        }
-    \end{center}
-\end{frame}
+\newcommand{\transition}{\Downarrow}
 
 \begin{frame}
     \frametitle{Productivity}
 
-    Now \alert{any} closed circuit is productive!
-
-
     \only<1>{
+        We want
         \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-0}
+            \tikzfig{circuits/components/circuits/f-seq-closed}
+            \quad=\quad
+            \tikzfig{circuits/productivity/productive}
         \end{center}
     }
     \only<2>{
         \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-0}
+            
+            \(\transition\)
+
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-0a}
         \end{center}
     }
     \only<3>{
         \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-0a}
+            
+            \(\transition\)
+
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-1}
         \end{center}
     }
     \only<4>{
         \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-1}
+
+            \(\transition\)
+
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-2}
         \end{center}
     }
     \only<5>{
         \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-2}
+
+            \(\transition\)
+
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-3}
         \end{center}
     }
     \only<6>{
         \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-3}
+
+            \(\transition\)
+
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-4}
         \end{center}
     }
     \only<7>{
         \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-4}
+
+            \(\transition\)
+
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-5}
         \end{center}
     }
     \only<8>{
         \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-5}
+
+            \(\transition\)
+
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-6}
         \end{center}
     }
     \only<9>{
         \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-6}
+
+            \(\transition\)
+
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-7}
         \end{center}
     }
     \only<10>{
         \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-7}
+
+            \(\transition\)
+
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-8}
         \end{center}
     }
     \only<11>{
         \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-8}
+
+            \(\transition\)
+
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-9}
         \end{center}
     }
     \only<12>{
         \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-9}
+
+            \(\transition\)
+
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-10}
         \end{center}
     }
     \only<13>{
         \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-10}
+
+            \(\transition\)
+
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-11}
         \end{center}
     }
     \only<14>{
         \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-11}
+
+            \(\transition\)
+
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-12}
         \end{center}
     }
-    \only<15->{
+    \only<15>{
         \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-12}
+
+            \(\transition\)
+
             \tikzfig{circuits/examples/reasoning/unfolding-dg/step-13}
         \end{center}
     }
-    \visible<16->{
-        We can keep applying this procedure to recover the elements of the \alert{corresponding stream}.
-    }
+    \only<16>{
+        \begin{center}
+            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-13}
+        \end{center}
 
+        \alert{All} circuits are productive!
+    }
 \end{frame}
 
 \begin{frame}
@@ -319,7 +344,7 @@
 \begin{frame}
     \frametitle{Open circuits}
 
-    Circuits as \alert{state machines}:
+    Circuits are \alert{state machines}:
 
     \[
         \tikzfig{circuits/components/circuits/f-seq}
@@ -517,18 +542,22 @@
 \begin{frame}
     \frametitle{Conclusion}
 
-    We have presented a \alert{categorical framework} for sequential circuits.
+    We have presented a \alert{categorical framework} for sequential circuits
 
     \wait
 
-    Sequential circuits have semantics as \alert{stream functions}, but it is easier to reason \alert{equationally}.
+    Semantics as \alert{stream functions}
+    
+    \wait
+
+    Easier to reason \alert{equationally}
 
     \wait
 
-    We have the equations to achieve \alert{full abstraction}, a correspondence between the syntactic and semantic frameworks.
+    \alert{Full abstraction}: a correspondence between syntactic and semantic
 
     \wait
 
-    We can even reason with circuits with \alert{non-delay-guarded feedback}!
+    Next step: refine the \alert{rewriting system}
 
 \end{frame}
