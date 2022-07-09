@@ -3,7 +3,7 @@ SECTIONS=$(wildcard sections/*.tex)
 AUX=
 SOURCE=$(MAIN) $(SECTIONS) $(AUX)
 ROOTS=$(wildcard main-*.tex)
-FIGS=$(wildcard figs/*)
+FIGS=$(wildcard figures/*)
 REFS=$(wildcard refs/*.bib)
 
 .PHONY: clean all presentation static init

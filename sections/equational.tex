@@ -163,6 +163,27 @@
 
 \newcommand{\transition}{\Downarrow}
 
+\NewDocumentCommand\animationframe{momm}{
+    \only<#1>{
+        \begin{minipage}{0.49\textwidth}
+            \IfValueT{2}{
+                \begin{center}
+                    #2
+                \end{center}
+            }
+        \end{minipage}
+        \begin{minipage}{0.49\textwidth}
+            \begin{center}
+                #3
+
+                \(\transition\)
+
+                #4
+            \end{center}
+        \end{minipage}
+    }
+}
+
 \begin{frame}
     \frametitle{Productivity}
 
@@ -174,139 +195,139 @@
             \tikzfig{circuits/productivity/productive}
         \end{center}
     }
-    \only<2>{
-        \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-0}
-            
-            \(\transition\)
 
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-0a}
-        \end{center}
+    \animationframe{2}[
+        Axioms of STMCs
+    ]{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-0}
+    }{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-0a}
     }
-    \only<3>{
-        \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-0a}
-            
-            \(\transition\)
-
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-1}
-        \end{center}
+    \animationframe{3}[
+        Eliminating `instant feedback'
+    ]{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-0a}
+    }{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-1}
     }
-    \only<4>{
-        \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-1}
-
-            \(\transition\)
-
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-2}
-        \end{center}
+    \animationframe{4}[
+        Axioms of STMCs
+    ]{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-1}
+    }{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-2}
     }
-    \only<5>{
-        \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-2}
-
-            \(\transition\)
-
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-3}
-        \end{center}
+    \animationframe{5}[
+        \tikzfig{strings/structure/comonoid/unitality-l-lhs}
+        \(=\)
+        \tikzfig{strings/structure/comonoid/unitality-l-rhs}
+        \(=\)
+        \tikzfig{strings/structure/comonoid/unitality-r-lhs}
+    ]{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-2}
+    }{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-3}
     }
-    \only<6>{
-        \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-3}
-
-            \(\transition\)
-
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-4}
-        \end{center}
+    \animationframe{6}[
+        \tikzfig{strings/cartesian/naturality-copy-lhs}
+        \(=\)
+        \tikzfig{strings/cartesian/naturality-copy-rhs}
+    ]{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-3}
+    }{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-4}
     }
-    \only<7>{
-        \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-4}
-
-            \(\transition\)
-
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-5}
-        \end{center}
+    \animationframe{7}[
+        \tikzfig{strings/cartesian/naturality-copy-lhs}
+        \(=\)
+        \tikzfig{strings/cartesian/naturality-copy-rhs}
+    ]{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-4}
+    }{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-5}
     }
-    \only<8>{
-        \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-5}
-
-            \(\transition\)
-
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-6}
-        \end{center}
+    \animationframe{8}[
+        Axioms of STMCs
+    ]{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-5}
+    }{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-6}
     }
-    \only<9>{
-        \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-6}
-
-            \(\transition\)
-
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-7}
-        \end{center}
+    \animationframe{9}[
+        Axioms of STMCs
+    ]{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-6}
+    }{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-7}
     }
-    \only<10>{
-        \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-7}
-
-            \(\transition\)
-
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-8}
-        \end{center}
+    \animationframe{10}[
+        \tikzfig{strings/cartesian/naturality-copy-lhs}
+        \(=\)
+        \tikzfig{strings/cartesian/naturality-copy-rhs}
+    ]{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-7}
+    }{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-8}
     }
-    \only<11>{
-        \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-8}
-
-            \(\transition\)
-
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-9}
-        \end{center}
+    \animationframe{11}[
+        \tikzfig{strings/structure/monoid/unitality-l-lhs}
+        \(=\)
+        \tikzfig{strings/structure/monoid/unitality-l-rhs}
+        \(=\)
+        \tikzfig{strings/structure/monoid/unitality-r-lhs}
+    ]{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-8}
+    }{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-9}
     }
-    \only<12>{
-        \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-9}
-
-            \(\transition\)
-
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-10}
-        \end{center}
+    \animationframe{12}[
+        \tikzfig{circuits/axioms/disconnect-rhs}
+        \(=\)
+        \tikzfig{circuits/axioms/disconnect-lhs}
+    ]{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-9}
+    }{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-10}
     }
-    \only<13>{
-        \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-10}
-
-            \(\transition\)
-
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-11}
-        \end{center}
+    \animationframe{13}[
+        \tikzfig{circuits/axioms/streaming-lhs-verbose}
+        \(=\)
+        \tikzfig{circuits/axioms/streaming-rhs}
+    ]{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-10}
+    }{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-11}
     }
-    \only<14>{
-        \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-11}
-
-            \(\transition\)
-
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-12}
-        \end{center}
+    \animationframe{14}[
+        Combinational circuit equations
+    ]{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-11}
+    }{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-12}
     }
-    \only<15>{
-        \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-12}
-
-            \(\transition\)
-
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-13}
-        \end{center}
+    \animationframe{15}[
+        Tidying up
+    ]{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-12}
+    }{
+        \tikzfig{circuits/examples/reasoning/unfolding-dg/step-13}
     }
-    \only<16>{
-        \begin{center}
-            \tikzfig{circuits/examples/reasoning/unfolding-dg/step-13}
-        \end{center}
+\end{frame}
 
-        \alert{All} circuits are productive!
-    }
+\begin{frame}
+    \frametitle{Productivity}
+
+    Any circuit has an \alert{instantaneous value} and a \alert{delayed subcircuit}.
+
+    \[
+        \tikzfig{circuits/components/circuits/f-seq}
+        \,=\,
+        \tikzfig{circuits/productivity/productive}    
+    \]
+
+    \wait
+    These values are the elements of the corresponding stream!
+
 \end{frame}
 
 \begin{frame}
@@ -317,56 +338,6 @@
     \wait
 
     \[
-        \tikzfig{circuits/examples/demorgan-lhs} 
-        \quad
-        \tikzfig{circuits/examples/demorgan-rhs} 
-    \]
-
-    \wait
-
-    We need another equation.
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{Open circuits}
-
-    When do these have the \alert{same stream}?
-
-    \[
-        \tikzfig{circuits/components/circuits/f-seq}
-        \qquad
-        \tikzfig{circuits/components/circuits/g-seq}
-    \]
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{Open circuits}
-
-    Circuits are \alert{state machines}:
-
-    \[
-        \tikzfig{circuits/components/circuits/f-seq}
-        \wait\quad=\quad
-        \tikzfig{circuits/full-abstraction/global-delay-f}
-    \]
-    
-    \wait
-
-    The circuit \(\tikzfig{circuits/components/circuits/f-pre-trace-unlabelled}\) produces the \alert{state transition} and \alert{output} of \(\tikzfig{circuits/components/circuits/f-seq}\).
-
-    \wait
-
-    \alert{Idea}: for all \alert{accessible states}, if the \alert{outputs} are equal then the \alert{original circuits} are equal under the equational theory.
-
-    \tiny{(cf. Mealy machine bisimulation)}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Open circuits: example}
-
-    \[
         \tikzfig{circuits/components/circuits/f-seq-unlabelled}
         \,=\,
         \tikzfig{circuits/examples/simple-and}    
@@ -375,140 +346,32 @@
         \,=\,
         \tikzfig{circuits/examples/simple-or-nots}
     \]
+
     \wait
-    \[
-        \tikzfig{circuits/components/circuits/f-pre-trace-unlabelled}
-        \,=\,
-        \tikzfig{circuits/examples/open-circuit-example/f-core}    
-        \qquad
-        \tikzfig{circuits/components/circuits/g-pre-trace-unlabelled}
-        \,=\,
-        \tikzfig{circuits/examples/open-circuit-example/g-core}
-    \]
+
+    When do two circuits have the \alert{same stream}?
+
 \end{frame}
 
 \begin{frame}
-    \frametitle{Open circuits: example}
+    \frametitle{Open circuits}
 
-    \alert{Initial state}...
+    We can think of circuits as \alert{state machines}:
 
-    \begin{center}
-        \begin{minipage}{0.45\textwidth}
-            \only<1>{
-                \begin{center}
-                    \tikzfig{circuits/examples/open-circuit-example/init-f-0}
-                \end{center}
-            }
-            \only<2>{
-                \begin{center}
-                    \tikzfig{circuits/examples/open-circuit-example/init-f-1}
-                \end{center}
-            }
-            \only<3>{
-                \begin{center}
-                    \tikzfig{circuits/examples/open-circuit-example/init-f-2}
-                \end{center}
-            }
-            \only<4->{
-                \begin{center}
-                    \tikzfig{circuits/examples/open-circuit-example/init-f-3}
-                \end{center}
-            }
-        \end{minipage}
-        \begin{minipage}{0.45\textwidth}
-        \only<1-5>{
-            \begin{center}
-                \tikzfig{circuits/examples/open-circuit-example/init-g-0}
-            \end{center}
-        }
-        \only<6>{
-            \begin{center}
-                \tikzfig{circuits/examples/open-circuit-example/init-g-1}
-            \end{center}
-        }
-        \only<7>{
-            \begin{center}
-                \tikzfig{circuits/examples/open-circuit-example/init-g-2}
-            \end{center}
-        }
-        \only<8>{
-            \begin{center}
-                \tikzfig{circuits/examples/open-circuit-example/init-g-3}
-            \end{center}
-        }
-        \only<9>{
-            \begin{center}
-                \tikzfig{circuits/examples/open-circuit-example/init-g-4}
-            \end{center}
-        }
-        \only<10->{
-            \begin{center}
-                \tikzfig{circuits/examples/open-circuit-example/init-g-5}
-            \end{center}
-        }
-        \end{minipage}
-    \end{center}
+    \[
+        \tikzfig{circuits/components/circuits/f-seq}
+        \wait\quad=\quad
+        \tikzfig{circuits/full-abstraction/global-delay-f}
+    \]
 
-    \visible<11->{
+    \wait
 
-        \alert{Next state}...
+    The circuit \(\tikzfig{circuits/components/circuits/f-pre-trace-unlabelled}\) produces the \alert{state transition} and \alert{output} of \(\tikzfig{circuits/components/circuits/f-seq}\).
 
-        \begin{center}
-            \begin{minipage}{0.3\textwidth}
-                \only<1-11>{
-                    \begin{center}
-                        \tikzfig{circuits/examples/open-circuit-example/next-f-0}
-                    \end{center}
-                }
-                \only<12>{
-                    \begin{center}
-                        \tikzfig{circuits/examples/open-circuit-example/next-f-1}
-                    \end{center}
-                }
-                \only<13->{
-                    \begin{center}
-                        \tikzfig{circuits/examples/open-circuit-example/next-f-2}
-                    \end{center}
-                }
-            \end{minipage}
-            \begin{minipage}{0.3\textwidth}
-            \only<1-14>{
-                \begin{center}
-                    \tikzfig{circuits/examples/open-circuit-example/next-g-0}
-                \end{center}
-            }
-            \only<15>{
-                \begin{center}
-                    \tikzfig{circuits/examples/open-circuit-example/next-g-1}
-                \end{center}
-            }
-            \only<16>{
-                \begin{center}
-                    \tikzfig{circuits/examples/open-circuit-example/next-g-2}
-                \end{center}
-            }
-            \only<17>{
-                \begin{center}
-                    \tikzfig{circuits/examples/open-circuit-example/next-g-3}
-                \end{center}
-            }
-            \only<18>{
-                \begin{center}
-                    \tikzfig{circuits/examples/open-circuit-example/next-g-4}
-                \end{center}
-            }
-            \only<19->{
-                \begin{center}
-                    \tikzfig{circuits/examples/open-circuit-example/next-g-5}
-                \end{center}
-            }
-            \end{minipage}
-        \end{center}
-    }
+    \alert{Idea}: for all \alert{accessible states}, if the \alert{outputs} are equal then the \alert{original circuits} are equal under the equational theory.
 
-    \visible<20>{
-        So the original circuits are equal in the equational theory.
-    }
+    \tiny{(cf. Mealy machine bisimulation)}
+
 \end{frame}
 
 \begin{frame}
@@ -546,15 +409,15 @@
 
     \wait
 
-    Semantics as \alert{stream functions}
+    Circuits have semantics as \alert{stream functions}
     
     \wait
 
-    Easier to reason \alert{equationally}
+    It is easier to reason \alert{equationally}
 
     \wait
 
-    \alert{Full abstraction}: a correspondence between syntactic and semantic
+    We have \alert{full abstraction}: a correspondence between syntactic and semantic
 
     \wait
 
